@@ -25,7 +25,7 @@ if(n!==c){m.textContent="Les deux mots de passe ne correspondent pas.";return}
 try{const r=await fetch(API,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},
 body:JSON.stringify({action:"change_password",email:em,session:sess,oldPassword:o,newPassword:n})});
 const d=await r.json();
-if(d.ok){m.style.color="#16834a";m.textContent="Mot de passe changé. Redirection...";setTimeout(()=>location.href="../etudiant/dashboard.html",800)}
+if(d.ok){m.style.color="#16834a";m.textContent="Mot de passe changé. Redirection...";setTimeout(()=>location.href=(sessionStorage.getItem("gtsi_role")==="formateur"?"../formateur/dashboard.html":"../etudiant/dashboard.html"),800)}
 else m.textContent=d.message||"Échec.";
 }catch(x){m.textContent="Connexion impossible."}});
 </script></body></html>

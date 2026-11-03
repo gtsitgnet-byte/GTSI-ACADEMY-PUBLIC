@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex"><title>Mot de passe oublié | GTSI Academy</title>
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../assets/css/style.css">
+<style>.b{max-width:420px;margin:48px auto;padding:26px 20px;background:#fff;border-radius:14px;box-shadow:0 8px 30px rgba(16,38,74,.1)}
+.b label{display:block;font-weight:600;margin:12px 0 4px}.b input{width:100%;padding:12px;border:1px solid #cdd6e4;border-radius:8px;font-size:1rem}
+.b button{width:100%;margin-top:18px;padding:13px;border:0;border-radius:8px;background:var(--blue);color:#fff;font-weight:700}
+#m{margin-top:12px;min-height:1.2em}#s2{display:none}</style></head>
+<body data-header="minimal"><header id="site-header"></header>
+<main><div class="b"><h1>Mot de passe oublié</h1>
+<form id="f1"><p>Saisissez l’adresse e-mail de votre compte. Un code vous sera envoyé.</p>
+<label for="e">Adresse e-mail</label><input id="e" type="email" autocomplete="username">
+<button type="submit" id="b1">Envoyer le code</button></form>
+<form id="s2"><label for="c">Code reçu (6 chiffres)</label><input id="c" inputmode="numeric" maxlength="6" autocomplete="one-time-code">
+<label for="n">Nouveau mot de passe (12 caractères minimum)</label><input id="n" type="password" autocomplete="new-password">
+<label for="n2">Confirmer</label><input id="n2" type="password" autocomplete="new-password">
+<button type="submit" id="b2">Changer le mot de passe</button></form>
+<p id="m" role="status"></p></div></main>
+<footer id="site-footer"></footer><script src="../assets/js/main.js" defer></script>
+<script>
+const API="https://script.google.com/macros/s/AKfycbxLQA5MHnRBD2UnkfAfiGXTFlWoJSoBiuVO_3xwf3_oVLXsr0YYsepsoy5-A51UVJIGvA/exec";
+const m=document.getElementById("m");
+function say(t,ok){m.style.color=ok?"#16834a":"#c62828";m.textContent=t}
+async function call(p){const r=await fetch(API,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(p)});return r.json()}
+const em=()=>document.getElementById("e").value.trim().toLowerCase();
+document.getElementById("f1").addEventListener("submit",async e=>{e.preventDefault();
+ const b=document.getElementById("b1");b.disabled=true;say("Envoi...",true);
+ try{const d=await call({action:"forgot_send",email:em()});
+  if(d.ok||d.error==="RESEND_TOO_SOON"){say("Si ce compte existe, un code vient d’être envoyé. Vérifiez aussi vos spams.",true);document.getElementById("s2").style.display="block"}
+  else{say(d.message||"Envoi impossible.");}
+ }catch(x){say("Connexion impossible.")}
+ setTimeout(()=>b.disabled=false,60000)});
+document.getElementById("s2").addEventListener("submit",async e=>{e.preventDefault();
+ const n=document.getElementById("n").value;
+ if(n.length<12){say("12 caractères minimum.");return}
+ if(n!==document.getElementById("n2").value){say("Les deux mots de passe ne correspondent pas.");return}
+ try{const d=await call({action:"forgot_reset",email:em(),code:document.getElementById("c").value.trim(),newPassword:n});
+  if(d.ok){say("Mot de passe changé. Redirection...",true);setTimeout(()=>location.href="connexion.html",900)}
+  else say(d.message||"Échec.")
+ }catch(x){say("Connexion impossible.")}});
+</script></body></html>

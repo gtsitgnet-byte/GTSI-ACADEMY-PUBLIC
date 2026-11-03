@@ -116,6 +116,7 @@
 
           <p id="loginMsg" role="status" aria-live="polite"></p>
         </form>
+    <p style="margin-top:14px;text-align:center"><a href="mot-de-passe-oublie.html">Mot de passe oublié ?</a></p>
 
         <div class="auth-register">
           Vous n'avez pas encore de compte ?
@@ -197,7 +198,7 @@ document.getElementById("loginForm").addEventListener("submit", async e => {
       setTimeout(() => {
         sessionStorage.setItem("gtsi_role", d.role || "");
         if (d.mustChange) { location.href = "mot-de-passe.html"; return; }
-        const dest = { etudiant: "../etudiant/dashboard.html" }[d.role];
+        const dest = { etudiant: "../etudiant/dashboard.html", formateur: "../formateur/dashboard.html" }[d.role];
         if (dest) { location.href = dest; } else { sessionStorage.clear(); msg.style.color = "#c62828"; msg.textContent = "Ce type de compte n’a pas d’accès sur ce site pour le moment."; btn.disabled = false; }
       }, 600);
 

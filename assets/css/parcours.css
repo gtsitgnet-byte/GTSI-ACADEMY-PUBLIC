@@ -1,0 +1,68 @@
+.parcours-hero {
+  padding: 65px 8%;
+  background: linear-gradient(120deg,#edf4ff,#e4edff);
+}
+.parcours-hero h1 {
+  max-width: 800px;
+  color: #10264a;
+  font-size: clamp(32px,5vw,48px);
+  line-height: 1.2;
+  margin: 15px 0;
+}
+.parcours-hero h1 span { color: #1769e0; }
+.parcours-hero p { max-width: 700px; color: #69788c; }
+.parcours-content { padding: 55px 7%; }
+.parcours-content h2 { color: #10264a; margin-bottom: 20px; }
+.parcours-intro { max-width: 800px; color: #69788c; margin-bottom: 35px; }
+.course-level { margin: 35px 0; }
+.level-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.level-heading span {
+  padding: 7px 12px;
+  border-radius: 6px;
+  color: #1769e0;
+  background: #edf4ff;
+  font-size: 12px;
+  font-weight: bold;
+}
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 16px;
+}
+.course-card {
+  padding: 22px;
+  border: 1px solid #e5ebf3;
+  border-radius: 12px;
+  background: white;
+}
+.course-card h3 { color: #10264a; margin-bottom: 9px; }
+.course-card p { color: #69788c; font-size: 14px; }
+.course-card small { display: block; color: #1769e0; margin-top: 14px; }
+.objectives {
+  padding: 35px;
+  border-radius: 12px;
+  background: #f4f7fc;
+  margin-top: 40px;
+}
+.objectives ul { padding-left: 20px; color: #69788c; }
+.objectives li { margin: 8px 0; }
+.parcours-cta {
+  margin-top: 40px;
+  padding: 40px 25px;
+  text-align: center;
+  color: white;
+  border-radius: 12px;
+  background: #10264a;
+}
+.parcours-cta p { margin: 12px 0 22px; color: #d5e1f4; }
+@media(max-width:650px) {
+  .course-grid { grid-template-columns: 1fr; }
+  .parcours-hero { padding: 45px 6%; }
+  .parcours-content { padding: 40px 6%; }
+  .objectives { padding: 24px; }
+}

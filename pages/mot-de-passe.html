@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex"><title>Nouveau mot de passe | GTSI Academy</title>
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../assets/css/style.css">
+<style>.b{max-width:420px;margin:48px auto;padding:26px 20px;background:#fff;border-radius:14px;box-shadow:0 8px 30px rgba(16,38,74,.1)}
+.b label{display:block;font-weight:600;margin:12px 0 4px}.b input{width:100%;padding:12px;border:1px solid #cdd6e4;border-radius:8px;font-size:1rem}
+.b button{width:100%;margin-top:18px;padding:13px;border:0;border-radius:8px;background:var(--blue);color:#fff;font-weight:700}#m{margin-top:12px;min-height:1.2em}</style></head>
+<body data-header="minimal"><header id="site-header"></header>
+<main><form class="b" id="f"><h1>Nouveau mot de passe</h1><p>Choisissez un mot de passe personnel (12 caractères minimum).</p>
+<label for="o">Mot de passe provisoire</label><input id="o" type="password" autocomplete="current-password">
+<label for="n">Nouveau mot de passe</label><input id="n" type="password" autocomplete="new-password">
+<label for="c">Confirmer</label><input id="c" type="password" autocomplete="new-password">
+<button type="submit">Enregistrer</button><p id="m" role="status"></p></form></main>
+<footer id="site-footer"></footer><script src="../assets/js/main.js" defer></script>
+<script>
+const API="https://script.google.com/macros/s/AKfycbxLQA5MHnRBD2UnkfAfiGXTFlWoJSoBiuVO_3xwf3_oVLXsr0YYsepsoy5-A51UVJIGvA/exec";
+const sess=sessionStorage.getItem("gtsi_session"),em=sessionStorage.getItem("gtsi_email");
+if(!sess||!em)location.replace("connexion.html");
+const m=document.getElementById("m");
+document.getElementById("f").addEventListener("submit",async e=>{e.preventDefault();
+const o=document.getElementById("o").value,n=document.getElementById("n").value,c=document.getElementById("c").value;
+m.style.color="#c62828";
+if(n.length<12){m.textContent="12 caractères minimum.";return}
+if(n!==c){m.textContent="Les deux mots de passe ne correspondent pas.";return}
+try{const r=await fetch(API,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},
+body:JSON.stringify({action:"change_password",email:em,session:sess,oldPassword:o,newPassword:n})});
+const d=await r.json();
+if(d.ok){m.style.color="#16834a";m.textContent="Mot de passe changé. Redirection...";setTimeout(()=>location.href="../etudiant/dashboard.html",800)}
+else m.textContent=d.message||"Échec.";
+}catch(x){m.textContent="Connexion impossible."}});
+</script></body></html>

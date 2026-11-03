@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Espace étudiant | GTSI Academy</title>
+  <link rel="icon" href="../assets/img/favicon.svg">
+  <link rel="stylesheet" href="../assets/css/etudiant.css">
+<script src="../assets/js/garde.js" data-role="etudiant"></script>
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="../index.html"><img src="../assets/img/logo-gtsi.webp" alt="GTSI Academy" class="logo-img"><b>GTSI ACADEMY<small>ESPACE ÉTUDIANT</small></b></a>
+    <p class="menu-title">MENU PRINCIPAL</p>
+    <nav>
+      <a class="active" href="#accueil">⌂ Tableau de bord</a>
+      <a href="#formations">▤ Mes formations</a>
+      <a href="#cours">▧ Cours et ressources</a>
+      <a href="#travaux">✓ Travaux et exercices</a>
+      <a href="#notes">▥ Notes et résultats</a>
+      <a href="#agenda">▦ Emploi du temps</a>
+    </nav>
+    <p class="menu-title">COMMUNICATION</p>
+    <nav>
+      <a href="#annonces">◉ Annonces</a>
+      <a href="#messages">✉ Messages</a>
+      <a href="#profil">♙ Mon profil</a>
+    </nav>
+    <div class="help"><b>Besoin d'aide ?</b><p>Notre équipe vous accompagne tout au long de votre parcours.</p><a href="#messages">Contacter l'administration →</a></div>
+    <a class="logout" href="../pages/connexion.html">↪ Se déconnecter</a>
+  </aside>
+
+  <main id="accueil">
+    <header class="topbar">
+      <button id="menuToggle" aria-label="Ouvrir le menu">☰</button>
+      <span>Espace étudiant / <b>Tableau de bord</b></span>
+      <div class="user"><span class="avatar" data-me="initiales">ET</span><div><b data-me="nom_complet">Espace étudiant</b><small data-me="email">Connecté</small></div></div>
+    </header>
+
+    <div class="content">
+      <section class="welcome">
+        <div><small>VOTRE ESPACE D'APPRENTISSAGE</small><h1>Bienvenue, <span data-me="prenom">sur votre espace étudiant</span></h1><p>Apprenez, développez vos compétences et suivez votre progression avec GTSI Academy.</p></div>
+        <a class="outline" href="../pages/formations.html">Découvrir les formations ↗</a>
+      </section>
+
+      <section class="hero">
+        <small>GTSI ACADEMY · APPRENDRE & INNOVER</small>
+        <h2>Construisez vos compétences.<br>Préparez votre avenir.</h2>
+        <p>Retrouvez vos cours, vos ressources pédagogiques et les informations importantes de votre parcours.</p>
+        <a href="#conseils">Découvrir les conseils pour réussir →</a>
+      </section>
+
+      <section class="stats">
+        <article><span>Statut du dossier</span><b data-me="statut_label">—</b><small>Admission GTSI Academy</small></article>
+        <article><span>Formations actives</span><b>0</b><small>Inscriptions validées</small></article>
+        <article><span>Travaux à effectuer</span><b>0</b><small>Exercices et évaluations</small></article>
+        <article><span>Résultats publiés</span><b>0</b><small>Notes communiquées</small></article>
+      </section>
+
+      <div class="columns">
+        <section class="panel" id="formations"><small>VOTRE PARCOURS</small><h2>Mes formations</h2><div class="empty"><b>Vos formations apparaîtront ici</b><p>Après validation de votre admission et activation de votre compte, vos cours seront accessibles dans cette rubrique.</p></div></section>
+        <section class="panel" id="annonces"><small>RESTEZ INFORMÉ</small><h2>Annonces récentes</h2><div class="empty"><b>Aucune annonce pour le moment</b><p>Les communications de l'administration et des formateurs seront publiées ici.</p></div></section>
+      </div>
+      <div class="columns">
+        <section class="panel" id="cours"><small>APPRENTISSAGE</small><h2>Cours et ressources</h2><div class="empty"><b>Bibliothèque pédagogique</b><p>Supports PDF, vidéos, documents et ressources de formation.</p></div></section>
+        <section class="panel" id="travaux"><small>ÉVALUATIONS</small><h2>Travaux et exercices</h2><div class="empty"><b>Aucun travail affiché</b><p>Les exercices et devoirs publiés par vos formateurs seront regroupés ici.</p></div></section>
+      </div>
+      <div class="columns">
+        <section class="panel" id="notes"><small>SUIVI ACADÉMIQUE</small><h2>Notes et résultats</h2><div class="empty"><b>Vos résultats seront disponibles ici</b><p>Consultez vos notes et les appréciations de vos formateurs.</p></div></section>
+        <section class="panel" id="agenda"><small>ORGANISATION</small><h2>Emploi du temps</h2><div class="empty"><b>Votre calendrier de formation</b><p>Les séances et événements seront affichés dès leur publication.</p></div></section>
+      </div>
+      <section class="panel" id="conseils">
+        <small>VOTRE RÉUSSITE</small>
+        <h2>Conseils pour réussir votre formation</h2>
+        <div class="empty">
+          <b>Organisez votre apprentissage</b>
+          <p>Établissez un programme de travail régulier et fixez-vous des objectifs réalistes.</p>
+          <b>Pratiquez régulièrement</b>
+          <p>Appliquez les notions apprises à travers des exercices et des projets personnels.</p>
+          <b>Posez des questions</b>
+          <p>N'hésitez pas à demander des explications lorsque vous rencontrez une difficulté.</p>
+          <b>Préparez vos évaluations</b>
+          <p>Révisez progressivement et entraînez-vous avant chaque évaluation.</p>
+        </div>
+      </section>
+      <section class="panel" id="messages"><small>COMMUNICATION</small><h2>Messages et assistance</h2><div class="empty"><b>Votre messagerie étudiante</b><p>Vous pourrez échanger avec les formateurs et l'administration.</p></div></section>
+      <section class="profile" id="profil">Mon profil — Vos informations personnelles seront consultables ici.</section>
+      <footer>© <span id="year"></span> GTSI Academy · <a href="../index.html">Retour au site public</a></footer>
+      <p class="demo">Profil réel connecté. Les rubriques cours, notes et emploi du temps restent des aperçus tant que les formations ne sont pas créées.</p>
+    </div>
+  </main>
+</div>
+<script src="../assets/js/etudiant.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Créer un compte | GTSI Academy</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="stylesheet" href="../assets/css/inscription.css">
+<link rel="stylesheet" href="../assets/vendor/intl-tel-input/intlTelInput.css">
+</head>
+<body data-header="minimal">
+
+<header id="site-header"></header>
+
+<main class="register-page">
+
+<section class="register-intro">
+  <span class="eyebrow">REJOIGNEZ NOTRE COMMUNAUTÉ</span>
+  <h1>Créer votre compte <span>GTSI Academy</span></h1>
+  <p>Votre parcours commence par la création de votre dossier étudiant.</p>
+  <div class="register-steps">
+    <span>01 · Identité</span>
+    <span>02 · Coordonnées</span>
+    <span>03 · E-mail vérifié</span>
+    <span>04 · Profil</span>
+    <span>05 · Validation</span>
+  </div>
+</section>
+
+<section class="register-container">
+  <div class="register-heading">
+    <h2>Formulaire de candidature</h2>
+    <p>Complétez les étapes dans l'ordre. Les champs marqués (*) sont obligatoires.</p>
+  </div>
+
+  <form id="registrationForm" novalidate>
+
+    <!-- ÉTAPE 1 : IDENTITÉ -->
+    <section class="form-step active" data-step="1">
+      <h3>1. Identité et état civil</h3>
+      <div class="form-grid">
+
+        <div class="field">
+          <label for="nom_naissance">Nom de naissance *</label>
+          <input id="nom_naissance" name="nom_naissance" required>
+        </div>
+
+        <div class="field">
+          <label for="prenom">Prénom(s) *</label>
+          <input id="prenom" name="prenom" required>
+        </div>
+
+        <div class="field">
+          <label for="date_naissance">Date de naissance *</label>
+          <input id="date_naissance" name="date_naissance"
+                 type="date" required>
+        </div>
+
+        <div class="field">
+          <label for="lieu_naissance">Lieu de naissance *</label>
+          <input id="lieu_naissance" name="lieu_naissance"
+                 placeholder="Ville et pays" required>
+        </div>
+
+        <div class="field full-width">
+          <label for="nationalite">Nationalité *</label>
+          <input id="nationalite" name="nationalite" required>
+        </div>
+
+      </div>
+      <button type="button" class="submit-button next-step">Continuer</button>
+    </section>
+
+    <!-- ÉTAPE 2 : COORDONNÉES -->
+    <section class="form-step" data-step="2">
+      <h3>2. Coordonnées et localisation</h3>
+      <p class="section-description">
+        Sélectionnez d'abord votre pays de résidence. Il servira à adapter
+        l'indicatif téléphonique.
+      </p>
+
+      <div class="form-grid">
+
+        <div class="field full-width">
+          <label for="pays">Pays de résidence *</label>
+          <select id="pays" name="pays" required>
+            <option value="">Chargement des pays...</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="ville">Ville *</label>
+          <input id="ville" name="ville" list="villeOptions" required
+                 placeholder="Choisissez ou saisissez votre ville">
+          <datalist id="villeOptions"></datalist>
+          <small>Choisissez une suggestion ou saisissez votre ville manuellement.</small>
+        </div>
+
+        <div class="field">
+          <label for="telephone">Numéro de téléphone *</label>
+          <input id="telephone" name="telephone" type="tel"
+                 autocomplete="tel" required>
+          <small id="phoneInfo">Choisissez d'abord votre pays.</small>
+        </div>
+
+        <div class="field">
+          <label for="bp">Boîte postale (BP)</label>
+          <input id="bp" name="bp" placeholder="Facultatif">
+        </div>
+
+        <div class="field">
+          <label for="rue">Rue / Adresse *</label>
+          <input id="rue" name="rue" required
+                 placeholder="Saisissez votre rue ou quartier">
+        </div>
+
+        <div class="field full-width">
+          <label for="email">Adresse e-mail *</label>
+          <input id="email" name="email" type="email"
+                 autocomplete="email" required
+                 placeholder="exemple@email.com">
+        </div>
+
+      </div>
+
+      <div class="navigation-buttons">
+        <button type="button" class="btn-secondary previous-step">Retour</button>
+        <button type="button" class="submit-button" id="sendOtp">
+          Envoyer le code de vérification
+        </button>
+      </div>
+      <p id="otpSendMessage" class="form-message" role="status"></p>
+    </section>
+
+    <!-- ÉTAPE 3 : OTP -->
+    <section class="form-step" data-step="3">
+      <h3>3. Vérification de l'adresse e-mail</h3>
+      <p class="section-description">
+        Saisissez le code à 6 chiffres envoyé à votre adresse e-mail.
+      </p>
+
+      <div class="field">
+        <label for="otpCode">Code de vérification *</label>
+        <input id="otpCode" name="otpCode" type="text"
+               inputmode="numeric" autocomplete="one-time-code"
+               maxlength="6" pattern="[0-9]{6}"
+               placeholder="000000">
+      </div>
+
+      <button type="button" class="submit-button" id="verifyOtp">
+        Vérifier mon adresse e-mail
+      </button>
+
+      <p id="otpVerifyMessage" class="form-message" role="status"></p>
+
+      <div class="navigation-buttons">
+        <button type="button" class="btn-secondary previous-step">Retour</button>
+        <button type="button" class="submit-button next-step"
+                id="continueAfterOtp" disabled>
+          Continuer
+        </button>
+      </div>
+    </section>
+
+    <!-- ÉTAPE 4 : PROFIL -->
+    <section class="form-step" data-step="4">
+      <h3>4. Profil académique et professionnel</h3>
+
+      <div class="form-grid">
+        <div class="field">
+          <label for="niveau">Niveau d'études *</label>
+          <select id="niveau" name="niveau" required>
+            <option value="">Choisir votre niveau</option>
+            <option>Collège</option>
+            <option>Lycée</option>
+            <option>Baccalauréat</option>
+            <option>Bac +1</option>
+            <option>Bac +2</option>
+            <option>Licence / Bac +3</option>
+            <option>Master / Bac +5</option>
+            <option>Doctorat</option>
+            <option>Formation professionnelle</option>
+            <option>Autre</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="statut">Situation professionnelle *</label>
+          <select id="statut" name="statut" required>
+            <option value="">Choisir votre situation</option>
+            <option>Élève</option>
+            <option>Étudiant</option>
+            <option>Salarié</option>
+            <option>Entrepreneur</option>
+            <option>Travailleur indépendant</option>
+            <option>En recherche d'emploi</option>
+            <option>Autre</option>
+          </select>
+        </div>
+
+        <div class="field full-width">
+          <label for="domaine">Domaine d'intérêt principal</label>
+          <select id="domaine" name="domaine">
+            <option value="">Choisir un domaine</option>
+            <option>Réseaux et télécommunications</option>
+            <option>MikroTik et administration réseaux</option>
+            <option>Cybersécurité</option>
+            <option>Systèmes informatiques</option>
+            <option>Vidéosurveillance et caméras</option>
+            <option>Développement informatique</option>
+            <option>Intelligence artificielle</option>
+            <option>Maintenance informatique</option>
+            <option>Installations techniques</option>
+            <option>Plusieurs domaines</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="navigation-buttons">
+        <button type="button" class="btn-secondary previous-step">Retour</button>
+        <button type="button" class="submit-button next-step">Continuer</button>
+      </div>
+    </section>
+
+    <!-- ÉTAPE 5 : DOCUMENTS ET CONFIRMATION -->
+    <section class="form-step" data-step="5">
+      <h3>5. Documents et confirmation</h3>
+
+      <div class="field">
+        <label for="document">Pièce d’identité *</label>
+        <input id="document" name="document" type="file"
+               accept=".pdf,.jpg,.jpeg,.png" required>
+        <small id="fileInfo">PDF, JPG ou PNG — 5 Mo maximum.</small>
+      </div>
+
+      <label class="consent">
+        <input type="checkbox" id="consent" required>
+        <span>
+          Je certifie l'exactitude des informations fournies et
+          j'accepte leur utilisation pour le traitement de ma candidature. *
+        </span>
+      </label>
+
+      <div class="validation-notice">
+        <strong>Validation administrative obligatoire</strong>
+        <p>
+          Après la vérification de votre adresse e-mail, votre dossier
+          sera soumis à l'administration GTSI Academy. Votre espace
+          étudiant sera activé uniquement après approbation.
+        </p>
+      </div>
+
+      <div class="navigation-buttons">
+        <button type="button" class="btn-secondary previous-step">Retour</button>
+        <button type="submit" class="submit-button">
+          Soumettre ma candidature
+        </button>
+      </div>
+      <p id="formMessage" class="form-message" role="status"></p>
+    </section>
+
+  </form>
+</section>
+
+<p class="login-link">
+  Vous avez déjà un compte ? <a href="../pages/connexion.html">Connectez-vous</a>
+</p>
+</main>
+
+<footer id="site-footer"></footer>
+
+<script src="../assets/vendor/intl-tel-input/intlTelInput.min.js"></script>
+<script src="../assets/js/data/villes-afrique.js"></script>
+<script src="../assets/js/inscription.js"></script>
+<script src="../assets/js/main.js" defer></script>
+</body>
+</html>

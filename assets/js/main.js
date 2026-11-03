@@ -33,8 +33,8 @@
         '<a href="' + url("index.html#contact") + '">Contact</a>';
 
       const actions =
-        '<span class="login" aria-disabled="true">Connexion bientôt disponible</span>' +
-        '<span class="btn-primary" aria-disabled="true">Candidature bientôt disponible</span>';
+        '<a class="login" href="' + url("pages/connexion.html") + '">Connexion</a>' +
+        '<a class="btn-primary" href="' + url("pages/inscription.html") + '">Créer un compte</a>';
 
       header.innerHTML =
         '<a href="' + url("index.html") + '" class="logo">' + logo + '</a>' +
@@ -54,8 +54,8 @@
       '<div class="footer-links">' +
       '<a href="' + url("pages/formations.html") + '">Nos formations</a>' +
       '<a href="' + url("pages/paiement.html") + '">Modalités de paiement</a>' +
-      '<span>Inscription bientôt disponible</span>' +
-      '<span>Connexion bientôt disponible</span>' +
+      '<a href="' + url("pages/inscription.html") + '">Inscription</a>' +
+      '<a href="' + url("pages/connexion.html") + '">Connexion</a>' +
       '</div>' +
       '<p class="footer-copy">© ' + new Date().getFullYear() +
       ' GTSI Academy — Global Technology Solutions &amp; Innovation.</p>';

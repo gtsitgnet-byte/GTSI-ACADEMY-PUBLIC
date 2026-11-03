@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Espace formateur | GTSI Academy</title>
+  <link rel="icon" href="../assets/img/favicon.svg">
+  <link rel="stylesheet" href="../assets/css/formateur.css">
+<script src="../assets/js/garde.js" data-role="formateur"></script>
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="../index.html">
+      <img src="../assets/img/logo-gtsi.webp" alt="GTSI Academy" class="logo-img">
+      <b>GTSI ACADEMY<small>ESPACE FORMATEUR</small></b>
+    </a>
+
+    <p class="menu-title">GESTION PÉDAGOGIQUE</p>
+    <nav>
+      <a class="active" href="#accueil">⌂ Tableau de bord</a>
+      <a href="#formations">▤ Mes formations</a>
+      <a href="#cours">▧ Gestion des cours</a>
+      <a href="#ressources">▣ Ressources pédagogiques</a>
+      <a href="#etudiants">♙ Mes étudiants</a>
+    </nav>
+
+    <p class="menu-title">ÉVALUATION</p>
+    <nav>
+      <a href="#devoirs">✓ Devoirs et exercices</a>
+      <a href="#notes">▥ Notes et évaluations</a>
+      <a href="#agenda">▦ Emploi du temps</a>
+    </nav>
+
+    <p class="menu-title">COMMUNICATION</p>
+    <nav>
+      <a href="#annonces">◉ Annonces</a>
+      <a href="#messages">✉ Messages</a>
+      <a href="#profil">♙ Mon profil</a>
+    </nav>
+
+    <div class="help">
+      <b>Besoin d'assistance ?</b>
+      <p>Contactez l'administration pour toute question concernant vos activités pédagogiques.</p>
+      <a href="#messages">Contacter l'administration →</a>
+    </div>
+
+    <a class="logout" href="../pages/connexion.html">↪ Se déconnecter</a>
+  </aside>
+
+  <main id="accueil">
+    <header class="topbar">
+      <button id="menuToggle" aria-label="Ouvrir le menu">☰</button>
+      <span>Espace formateur / <b>Tableau de bord</b></span>
+      <div class="user">
+        <span class="avatar">FO</span>
+        <div>
+          <b>Espace formateur</b>
+          <small>Interface de démonstration</small>
+        </div>
+      </div>
+    </header>
+
+    <div class="content">
+      <section class="welcome">
+        <div>
+          <small>VOTRE ESPACE D'ENSEIGNEMENT</small>
+          <h1>Bienvenue dans votre espace formateur</h1>
+          <p>Préparez vos cours, accompagnez vos étudiants et suivez leurs progrès.</p>
+        </div>
+      </section>
+
+      <section class="hero">
+        <small>GTSI ACADEMY · TRANSMETTRE & FORMER</small>
+        <h2>Partagez votre savoir.<br>Développez les compétences.</h2>
+        <p>Retrouvez vos outils pédagogiques pour organiser vos formations et accompagner chaque apprenant.</p>
+        <form class="global-search" id="globalSearch" role="search">
+          <label class="sr-only" for="globalSearchInput">Rechercher dans votre espace formateur</label>
+          <span class="search-icon" aria-hidden="true">⌕</span>
+          <input id="globalSearchInput" type="search"
+                 placeholder="Rechercher une formation, un étudiant, un cours..."
+                 autocomplete="off">
+          <button type="submit">Rechercher</button>
+          <div class="search-results" id="searchResults" role="status" aria-live="polite" hidden></div>
+        </form>
+      </section>
+
+      <section class="stats">
+        <article><span>Formations attribuées</span><b>—</b><small>Vos parcours pédagogiques</small></article>
+        <article><span>Étudiants suivis</span><b>—</b><small>Vos apprenants</small></article>
+        <article><span>Travaux à corriger</span><b>—</b><small>Devoirs en attente</small></article>
+        <article><span>Cours publiés</span><b>—</b><small>Vos contenus pédagogiques</small></article>
+      </section>
+
+      <div class="columns">
+        <section class="panel" id="formations">
+          <small>VOTRE ACTIVITÉ</small>
+          <h2>Mes formations</h2>
+          <div class="empty">
+            <b>Vos formations attribuées apparaîtront ici</b>
+            <p>L'administration vous attribuera les formations correspondant à vos compétences et responsabilités.</p>
+          </div>
+        </section>
+
+        <section class="panel" id="etudiants">
+          <small>VOTRE CLASSE</small>
+          <h2>Mes étudiants</h2>
+          <div class="empty">
+            <b>Votre liste d'étudiants</b>
+            <p>Consultez les apprenants inscrits à vos formations et suivez leur progression.</p>
+          </div>
+        </section>
+      </div>
+
+      <div class="columns">
+        <section class="panel" id="cours">
+          <small>ENSEIGNEMENT</small>
+          <h2>Gestion des cours</h2>
+          <div class="empty">
+            <b>Votre espace de préparation des cours</b>
+            <p>Organisez vos modules, chapitres, leçons et objectifs pédagogiques.</p>
+          </div>
+        </section>
+
+        <section class="panel" id="ressources">
+          <small>DOCUMENTATION</small>
+          <h2>Ressources pédagogiques</h2>
+          <div class="empty">
+            <b>Votre bibliothèque de ressources</b>
+            <p>Préparez les supports PDF, vidéos, présentations et documents destinés aux étudiants.</p>
+          </div>
+        </section>
+      </div>
+
+      <div class="columns">
+        <section class="panel" id="devoirs">
+          <small>TRAVAUX PRATIQUES</small>
+          <h2>Devoirs et exercices</h2>
+          <div class="empty">
+            <b>Gestion des travaux</b>
+            <p>Publiez des exercices, définissez les consignes et consultez les travaux remis par les étudiants.</p>
+          </div>
+        </section>
+
+        <section class="panel" id="notes">
+          <small>SUIVI ACADÉMIQUE</small>
+          <h2>Notes et évaluations</h2>
+          <div class="empty">
+            <b>Suivi des performances</b>
+            <p>Évaluez les apprenants, attribuez les notes et ajoutez des appréciations pédagogiques.</p>
+          </div>
+        </section>
+      </div>
+
+      <div class="columns">
+        <section class="panel" id="agenda">
+          <small>ORGANISATION</small>
+          <h2>Emploi du temps</h2>
+          <div class="empty">
+            <b>Votre calendrier pédagogique</b>
+            <p>Consultez les séances, les horaires et les événements liés à vos formations.</p>
+          </div>
+        </section>
+
+        <section class="panel" id="annonces">
+          <small>INFORMATIONS</small>
+          <h2>Annonces</h2>
+          <div class="empty">
+            <b>Vos communications</b>
+            <p>Consultez les annonces de l'administration et les informations destinées aux formateurs.</p>
+          </div>
+        </section>
+      </div>
+
+      <section class="panel" id="messages">
+        <small>COMMUNICATION</small>
+        <h2>Messages et assistance</h2>
+        <div class="empty">
+          <b>Votre espace de communication</b>
+          <p>Échangez avec les étudiants et l'administration de GTSI Academy.</p>
+        </div>
+      </section>
+
+      <section class="profile" id="profil">
+        Mon profil — Vos informations professionnelles seront consultables ici.
+      </section>
+
+      <footer>
+        © <span id="year"></span> GTSI Academy ·
+        <a href="../index.html">Retour au site public</a>
+      </footer>
+
+      <p class="demo">
+        Aperçu de l'interface : les données réelles et les fonctionnalités seront raccordées au backend lors de l'intégration.
+      </p>
+    </div>
+  </main>
+</div>
+<script src="../assets/js/formateur.js" defer></script>
+</body>
+</html>

@@ -208,3 +208,7 @@ body{isolation:isolate}
 
 /* Contenu au-dessus du filigrane */
 .layout{position:relative;z-index:1}
+
+/* Correctif mobile */
+.topbar{background:#fff;position:sticky;top:0;z-index:20}
+@media (max-width:760px){body{overflow-x:hidden}}

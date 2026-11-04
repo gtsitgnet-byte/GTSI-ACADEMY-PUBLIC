@@ -229,3 +229,12 @@ body{isolation:isolate}
 .stats article small{font-size:12px;color:#5d6b80}
 .demo{font-size:12px;color:#5d6b80}
 .panel p,.panel small{color:#4b5a70}
+
+/* Correctif mobile */
+.topbar{background:#fff;position:sticky;top:0;z-index:20}
+@media (max-width:760px){
+  .topbar{flex-wrap:nowrap;overflow:hidden}
+  .topbar > span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+  .sidebar{z-index:30}
+  body{overflow-x:hidden}
+}

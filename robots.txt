@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /GTSI-ACADEMY-PUBLIC/etudiant/
+Disallow: /GTSI-ACADEMY-PUBLIC/formateur/

@@ -2,97 +2,170 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-<meta name="referrer" content="no-referrer">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex">
-  <title>Espace étudiant | GTSI Academy</title>
-  <link rel="icon" href="../assets/img/favicon.svg">
-  <link rel="stylesheet" href="../assets/css/etudiant.css">
-<script src="../assets/js/garde.js" data-role="etudiant"></script>
+  <meta name="theme-color" content="#10294b">
+  <title>Mon espace étudiant | GTSI Academy</title>
+  <link rel="icon" href="/assets/img/favicon.svg">
+  <link rel="stylesheet" href="/assets/css/etudiant.css">
+  <script src="/assets/js/garde.js" data-role="etudiant"></script>
 </head>
 <body>
-<div class="layout">
+<div class="layout" id="layout">
   <aside class="sidebar" id="sidebar">
-    <a class="brand" href="../index.html"><img src="../assets/img/logo-gtsi.webp" alt="GTSI Academy" class="logo-img"><b>GTSI ACADEMY<small>ESPACE ÉTUDIANT</small></b></a>
+    <a class="brand" href="/index.html">
+      <img src="/assets/img/logo-gtsi.webp" alt="GTSI Academy" class="logo-img">
+      <span><b>GTSI ACADEMY</b><small>ESPACE ÉTUDIANT</small></span>
+    </a>
     <p class="menu-title">MENU PRINCIPAL</p>
-    <nav>
-      <a class="active" href="#accueil">⌂ Tableau de bord</a>
-      <a href="#formations">▤ Mes formations</a>
-      <a href="#cours">▧ Cours et ressources</a>
-      <a href="#travaux">✓ Travaux et exercices</a>
-      <a href="#notes">▥ Notes et résultats</a>
-      <a href="#agenda">▦ Emploi du temps</a>
+    <nav aria-label="Menu principal">
+      <a class="active" href="#accueil"><span class="nav-icon">⌂</span>Tableau de bord</a>
+      <a href="#formations"><span class="nav-icon">▤</span>Mon parcours</a>
+      <a href="#cours"><span class="nav-icon">▧</span>Cours et ressources</a>
+      <a href="#travaux"><span class="nav-icon">✓</span>Travaux et exercices</a>
+      <a href="#notes"><span class="nav-icon">▥</span>Notes et résultats</a>
+      <a href="#agenda"><span class="nav-icon">▦</span>Emploi du temps</a>
     </nav>
-    <p class="menu-title">COMMUNICATION</p>
-    <nav>
-      <a href="#annonces">◉ Annonces</a>
-      <a href="#messages">✉ Messages</a>
-      <a href="#profil">♙ Mon profil</a>
+    <p class="menu-title communication-title">COMMUNICATION</p>
+    <nav aria-label="Communication">
+      <a href="#annonces"><span class="nav-icon">◉</span>Annonces</a>
+      <a href="#messages"><span class="nav-icon">✉</span>Messages</a>
+      <a href="#profil"><span class="nav-icon">♙</span>Mon profil</a>
     </nav>
-    <div class="help"><b>Besoin d'aide ?</b><p>Notre équipe vous accompagne tout au long de votre parcours.</p><a href="#messages">Contacter l'administration →</a></div>
-    <a class="logout" href="../pages/connexion.html">↪ Se déconnecter</a>
+    <div class="help">
+      <span class="help-icon">?</span>
+      <b>Besoin d'aide ?</b>
+      <p>Notre équipe vous accompagne tout au long de votre parcours.</p>
+      <a href="#messages">Contacter l'administration <span>→</span></a>
+    </div>
+    <a class="logout" href="/pages/connexion.html"><span>↪</span> Se déconnecter</a>
   </aside>
 
   <main id="accueil">
     <header class="topbar">
-      <button id="menuToggle" aria-label="Ouvrir le menu">☰</button>
-      <span>Espace étudiant / <b>Tableau de bord</b></span>
-      <div class="user"><span class="avatar" data-me="initiales">ET</span><div><b data-me="nom_complet">Espace étudiant</b><small data-me="email">Connecté</small></div></div>
+      <button id="menuToggle" class="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+      <div class="breadcrumb">Espace étudiant <span>/</span> <b>Tableau de bord</b></div>
+      <div class="topbar-right">
+        <div class="notification-wrap">
+          <button class="notification-button" id="notificationToggle" type="button" aria-label="Ouvrir les notifications" aria-expanded="false" aria-controls="notificationPanel">
+            <span aria-hidden="true">🔔</span><i class="notification-dot" id="notificationDot" hidden></i>
+          </button>
+          <section class="notification-panel" id="notificationPanel" hidden aria-label="Notifications">
+            <div class="notification-head"><div><b>Notifications</b><small id="notificationCount">Centre de notifications</small></div><button type="button" id="notificationClose" aria-label="Fermer les notifications">×</button></div>
+            <div class="notification-list" id="notificationList"><div class="notification-empty"><span>♧</span><b>Tout est à jour</b><p>Vous n'avez aucune nouvelle notification.</p></div></div>
+            <a class="notification-footer" href="#annonces" id="allNotifications">Voir les annonces <span>→</span></a>
+          </section>
+        </div>
+        <div class="today-clock"><span class="clock-symbol">◷</span><div><strong id="liveClock">--:--:--</strong><small id="todayDate">—</small></div></div>
+        <div class="user">
+          <span class="avatar" data-me="initiales">ET</span>
+          <span class="user-details"><b data-me="nom_complet">Espace étudiant</b><small data-me="email">Connecté</small></span>
+        </div>
+      </div>
     </header>
 
     <div class="content">
-      <section class="welcome">
-        <div><small>VOTRE ESPACE D'APPRENTISSAGE</small><h1>Bienvenue, <span data-me="prenom">sur votre espace étudiant</span></h1><p>Apprenez, développez vos compétences et suivez votre progression avec GTSI Academy.</p></div>
-        <a class="outline" href="../pages/formations.html">Découvrir les formations ↗</a>
+      <section class="welcome-row">
+        <div>
+          <span class="eyebrow">VOTRE ESPACE D'APPRENTISSAGE</span>
+          <h1>Bonjour, <span data-me="prenom">bienvenue</span> <span class="wave">👋</span></h1>
+          <p>Retrouvez ici l'essentiel de votre vie académique.</p>
+        </div>
+        <div class="welcome-mark" aria-hidden="true">GTSI<span>ACADEMY</span></div>
       </section>
 
-      <section class="hero">
-        <small>GTSI ACADEMY · APPRENDRE & INNOVER</small>
-        <h2>Construisez vos compétences.<br>Préparez votre avenir.</h2>
-        <p>Retrouvez vos cours, vos ressources pédagogiques et les informations importantes de votre parcours.</p>
-        <a href="#conseils">Découvrir les conseils pour réussir →</a>
+      <section class="feature-grid">
+        <article class="panel next-session" aria-labelledby="nextSessionTitle">
+          <div class="panel-heading">
+            <div class="heading-icon blue-soft">▦</div>
+            <div><span class="section-kicker">VOTRE AGENDA</span><h2 id="nextSessionTitle">Votre prochain cours</h2></div>
+            <span class="live-tag" id="sessionStatus">À synchroniser</span>
+          </div>
+          <div class="session-body">
+            <div class="session-calendar"><span id="nextDay">—</span><strong id="nextDateNumber">—</strong><small id="nextMonth">—</small></div>
+            <div class="session-details">
+              <h3 id="nextCourseName">Aucune séance à afficher pour le moment</h3>
+              <div class="session-meta">
+                <span><i>◷</i><b id="nextCourseTime">Horaire à confirmer</b></span>
+                <span><i>♙</i><b id="nextTrainerName">Formateur à confirmer</b></span>
+                <span><i>⌖</i><b id="nextCourseRoom">Salle / modalité à confirmer</b></span>
+                <span><i>▦</i><b id="nextCourseDate">Date à confirmer</b></span>
+              </div>
+            </div>
+          </div>
+          <p class="data-note" id="sessionNote">Les séances apparaîtront ici dès que le planning réel sera disponible.</p>
+          <a class="panel-link" href="#agenda">Consulter mon emploi du temps <span>→</span></a>
+        </article>
+
+        <article class="panel journey-panel" id="formations">
+          <div class="panel-heading">
+            <div class="heading-icon violet-soft">◇</div>
+            <div><span class="section-kicker">VOTRE PARCOURS</span><h2>Ma formation</h2></div>
+            <span class="soft-status" id="trainingStatus">En attente</span>
+          </div>
+          <div class="journey-body">
+            <h3 id="trainingName">Votre formation apparaîtra ici</h3>
+            <p class="muted" id="trainingLevel">Niveau : non renseigné</p>
+            <div class="training-dates">
+              <span><small>Début de formation</small><b id="trainingStart">—</b></span>
+              <span><small>Fin prévue</small><b id="trainingEnd">—</b></span>
+            </div>
+          </div>
+          <div class="progress-line">
+            <div class="progress-label"><span>Progression pédagogique</span><b id="trainingProgressLabel">Non disponible</b></div>
+            <div class="progress-track"><span id="trainingProgressBar"></span></div>
+          </div>
+          <p class="data-note">Votre formation et votre niveau seront affichés selon votre inscription validée.</p>
+        </article>
       </section>
 
-      <section class="stats">
-        <article><span>Statut du dossier</span><b data-me="statut_label">—</b><small>Admission GTSI Academy</small></article>
-        <article><span>Formations actives</span><b>0</b><small>Inscriptions validées</small></article>
-        <article><span>Travaux à effectuer</span><b>0</b><small>Exercices et évaluations</small></article>
-        <article><span>Résultats publiés</span><b>0</b><small>Notes communiquées</small></article>
+      <section class="panel attendance-section">
+        <div class="panel-heading attendance-heading">
+          <div class="heading-icon green-soft">✓</div>
+          <div><span class="section-kicker">SUIVI PÉDAGOGIQUE</span><h2>Mon assiduité</h2></div>
+          <button class="text-action" type="button" id="openAttendance">Voir mon dossier détaillé <span>→</span></button>
+        </div>
+        <div class="attendance-grid">
+          <article class="metric-card"><span class="metric-icon present">✓</span><div><strong id="attendedCount">—</strong><span>Cours suivis</span></div></article>
+          <article class="metric-card"><span class="metric-icon missed">!</span><div><strong id="missedCount">—</strong><span>Cours manqués</span></div></article>
+          <article class="metric-card"><span class="metric-icon planned">▦</span><div><strong id="plannedCount">—</strong><span>Séances tenues / prévues</span></div></article>
+          <article class="metric-card"><span class="metric-icon rate">%</span><div><strong id="attendanceRate">—</strong><span>Taux de présence</span></div></article>
+        </div>
+        <p class="attendance-note">ℹ Seules les séances réellement tenues et renseignées seront comptabilisées. Une séance annulée ou non renseignée ne sera pas considérée comme une absence.</p>
       </section>
 
-      <div class="columns">
-        <section class="panel" id="formations"><small>VOTRE PARCOURS</small><h2>Mes formations</h2><div class="empty"><b>Vos formations apparaîtront ici</b><p>Après validation de votre admission et activation de votre compte, vos cours seront accessibles dans cette rubrique.</p></div></section>
-        <section class="panel" id="annonces"><small>RESTEZ INFORMÉ</small><h2>Annonces récentes</h2><div class="empty"><b>Aucune annonce pour le moment</b><p>Les communications de l'administration et des formateurs seront publiées ici.</p></div></section>
-      </div>
-      <div class="columns">
-        <section class="panel" id="cours"><small>APPRENTISSAGE</small><h2>Cours et ressources</h2><div class="empty"><b>Bibliothèque pédagogique</b><p>Supports PDF, vidéos, documents et ressources de formation.</p></div></section>
-        <section class="panel" id="travaux"><small>ÉVALUATIONS</small><h2>Travaux et exercices</h2><div class="empty"><b>Aucun travail affiché</b><p>Les exercices et devoirs publiés par vos formateurs seront regroupés ici.</p></div></section>
-      </div>
-      <div class="columns">
-        <section class="panel" id="notes"><small>SUIVI ACADÉMIQUE</small><h2>Notes et résultats</h2><div class="empty"><b>Vos résultats seront disponibles ici</b><p>Consultez vos notes et les appréciations de vos formateurs.</p></div></section>
-        <section class="panel" id="agenda"><small>ORGANISATION</small><h2>Emploi du temps</h2><div class="empty"><b>Votre calendrier de formation</b><p>Les séances et événements seront affichés dès leur publication.</p></div></section>
-      </div>
-      <section class="panel" id="conseils">
-        <small>VOTRE RÉUSSITE</small>
-        <h2>Conseils pour réussir votre formation</h2>
-        <div class="empty">
-          <b>Organisez votre apprentissage</b>
-          <p>Établissez un programme de travail régulier et fixez-vous des objectifs réalistes.</p>
-          <b>Pratiquez régulièrement</b>
-          <p>Appliquez les notions apprises à travers des exercices et des projets personnels.</p>
-          <b>Posez des questions</b>
-          <p>N'hésitez pas à demander des explications lorsque vous rencontrez une difficulté.</p>
-          <b>Préparez vos évaluations</b>
-          <p>Révisez progressivement et entraînez-vous avant chaque évaluation.</p>
+      <section class="lower-grid">
+        <div class="lower-stack">
+          <article class="panel info-panel" id="agenda"><div class="panel-heading"><div class="heading-icon blue-soft">▦</div><div><span class="section-kicker">ORGANISATION</span><h2>Emploi du temps</h2></div></div><div class="empty"><b>Votre calendrier de formation</b><p>Vos prochaines séances seront affichées dès la synchronisation du planning.</p></div></article>
+          <article class="panel info-panel" id="cours"><div class="panel-heading"><div class="heading-icon green-soft">▤</div><div><span class="section-kicker">APPRENTISSAGE</span><h2>Cours et ressources</h2></div></div><div class="empty"><b>Votre bibliothèque pédagogique</b><p>Les supports PDF, vidéos et documents publiés par vos formateurs seront regroupés ici.</p></div></article>
+          <article class="panel info-panel" id="travaux"><div class="panel-heading"><div class="heading-icon orange-soft">✎</div><div><span class="section-kicker">ÉVALUATIONS</span><h2>Travaux et exercices</h2></div></div><div class="empty"><b>Vos travaux à effectuer</b><p>Les devoirs et exercices disponibles apparaîtront ici.</p></div></article>
+          <article class="panel info-panel" id="notes"><div class="panel-heading"><div class="heading-icon violet-soft">▤</div><div><span class="section-kicker">RÉSULTATS</span><h2>Notes et résultats</h2></div></div><div class="empty"><b>Votre suivi académique</b><p>Vos notes et appréciations seront consultables dès leur publication.</p></div></article>
+        </div>
+        <div class="lower-stack">
+          <article class="panel info-panel" id="annonces"><div class="panel-heading"><div class="heading-icon orange-soft">◉</div><div><span class="section-kicker">RESTEZ INFORMÉ</span><h2>Annonces récentes</h2></div></div><div class="empty"><b>Aucune annonce à afficher</b><p>Les communications de l'administration et des formateurs apparaîtront ici.</p></div></article>
+          <article class="panel info-panel" id="messages"><div class="panel-heading"><div class="heading-icon blue-soft">✉</div><div><span class="section-kicker">COMMUNICATION</span><h2>Messages et assistance</h2></div></div><div class="empty"><b>Votre messagerie étudiante</b><p>Vous pourrez échanger avec les formateurs et l'administration.</p></div></article>
+          <article class="panel info-panel" id="profil"><div class="panel-heading"><div class="heading-icon green-soft">♙</div><div><span class="section-kicker">COMPTE</span><h2>Mon profil</h2></div></div><div class="empty"><b>Vos informations personnelles</b><p>Elles sont associées à votre compte étudiant.</p></div></article>
         </div>
       </section>
-      <section class="panel" id="messages"><small>COMMUNICATION</small><h2>Messages et assistance</h2><div class="empty"><b>Votre messagerie étudiante</b><p>Vous pourrez échanger avec les formateurs et l'administration.</p></div></section>
-      <section class="profile" id="profil">Mon profil — Vos informations personnelles seront consultables ici.</section>
-      <footer>© <span id="year"></span> GTSI Academy · <a href="../index.html">Retour au site public</a></footer>
-      <p class="demo">Profil réel connecté. Les rubriques cours, notes et emploi du temps restent des aperçus tant que les formations ne sont pas créées.</p>
+
+      <footer>© <span id="year"></span> GTSI Academy · <a href="/index.html">Retour au site public</a><span>Plateforme de formation professionnelle</span></footer>
+      <p class="demo">Les statistiques pédagogiques seront affichées après connexion aux données réelles du planning et des feuilles de présence.</p>
     </div>
   </main>
 </div>
-<script src="../assets/js/etudiant.js" defer></script>
+
+<div class="modal-backdrop" id="attendanceModal" hidden>
+  <section class="attendance-modal" role="dialog" aria-modal="true" aria-labelledby="attendanceTitle">
+    <div class="modal-header"><div><div class="section-kicker">DOSSIER PÉDAGOGIQUE</div><h2 id="attendanceTitle">Mon suivi des cours</h2></div><button type="button" class="modal-close" id="closeAttendance" aria-label="Fermer">×</button></div>
+    <div class="modal-course" id="attendanceTrainingName">Formation : données à synchroniser</div>
+    <div class="detail-stats">
+      <div><strong id="detailAttended">—</strong><span>Suivis</span></div><div><strong id="detailMissed">—</strong><span>Manqués</span></div><div><strong id="detailHeld">—</strong><span>Séances tenues</span></div><div><strong id="detailRate">—</strong><span>Présence</span></div>
+    </div>
+    <div class="modal-section-title">Historique des séances</div>
+    <div class="history-empty" id="attendanceHistory">L'historique apparaîtra ici lorsque les présences seront enregistrées par les formateurs.</div>
+    <p class="data-note">Les séances annulées et les séances sans feuille de présence ne sont pas comptées comme des absences.</p>
+  </section>
+</div>
+<script src="/assets/js/etudiant.js" defer></script>
 </body>
 </html>

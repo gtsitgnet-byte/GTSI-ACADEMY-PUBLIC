@@ -293,6 +293,7 @@ let otpToken = null;
 let resendTimer = null;
 
 async function callApi(payload) {
+  if (payload.action === "send_otp") Object.assign(payload, await window.gtsiPow(OTP_API));
   const response = await fetch(OTP_API, {
     method: "POST",
     headers: {"Content-Type": "text/plain;charset=utf-8"},
